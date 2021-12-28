@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import {Navbar, NavbarBrand} from 'reactstrap';
 import React, { Component } from 'react';
 import StaffList from './components/StaffListComponent';
@@ -16,9 +15,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar dark color='primary'>
+        <Navbar light color='warning'>
           <div className='container'>
-            <NavbarBrand href='#'>Ứng dụng quản lí nhân sự v1.0</NavbarBrand>
+            <NavbarBrand href='#' text-danger>Ứng dụng quản lí nhân sự v1.0</NavbarBrand>
           </div>
         </Navbar>
         <StaffList staffs={this.state.staffs}/>
