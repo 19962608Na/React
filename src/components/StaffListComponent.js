@@ -48,7 +48,7 @@ class StaffList extends Component {
         })
 
         return ( 
-            <div className="container">
+            <div className="container-fluid">
                 <div className="row">
                     {staffList}
                 </div>
