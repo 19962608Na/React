@@ -1,9 +1,16 @@
 import logo from './logo.svg';
 import {Navbar, NavbarBrand} from 'reactstrap';
+import StaffList from './components/StaffListComponent';
 import './App.css';
 import { Component } from 'react';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      
+    }
+  }
   render() {
     return (
       <div className="App">
