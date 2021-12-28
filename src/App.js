@@ -22,6 +22,9 @@ class App extends Component {
           </div>
         </Navbar>
         <StaffList staffs={this.state.staffs}/>
+        <div className='MoreInfo'>
+          <p>Bấm vào tên nhân viên để xem thông tin</p>
+        </div>
       </div>
     );
   }

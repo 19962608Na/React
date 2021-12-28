@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import {STAFFS} from '../shared/staffs';
 import {Card, CardText, CardBody, CardTitle} from 'reactstrap';
+import dateFormat from 'dateformat';
 
 class StaffList extends Component {
     constructor(props) {
