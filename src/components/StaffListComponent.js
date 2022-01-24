@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Card, CardText, CardBody, CardTitle} from 'reactstrap';
+import {Card, CardText, CardBody, CardTitle, CardImg} from 'reactstrap';
 import dateFormat from 'dateformat';
 
 class StaffList extends Component {
@@ -37,9 +37,10 @@ class StaffList extends Component {
     render() {          
         const staffList = this.props.staffs.map((staff) => {
             return (
-                <div className = "col-12 col-sm-6 col-md-4">
-                    <Card key={staff.id} onClick={() => this.onNameSelect(staff)}>
+                <div className = "col-6 col-sm-4 col-md-2">
+                    <Card key={staff.id}>
                         <CardBody>
+                            <CardImg width="100%" src={staff.image} alt={staff.name} />                            
                             <CardTitle>{staff.name}</CardTitle>
                         </CardBody>
                     </Card>
@@ -50,6 +51,9 @@ class StaffList extends Component {
         return ( 
             <div className="container-fluid">
                 <div className="row">
+                    <h1>Nhân viên</h1>                                  
+                </div>
+                <div className="row">                    
                     {staffList}
                 </div>
                 <div className="row">
@@ -63,3 +67,5 @@ class StaffList extends Component {
 }
  
 export default StaffList;
+
+// onClick={() => this.onNameSelect(staff)}
