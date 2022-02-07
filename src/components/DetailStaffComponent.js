@@ -27,7 +27,7 @@ function RenderStaff({ staff }) {
     );
   else return <div></div>;
 }
-const StaffDetail = (props) => {
+const DetailStaff = (props) => {
   if (props.staff !== null)
     return (
       <div>
@@ -47,4 +47,4 @@ const StaffDetail = (props) => {
   else return <div></div>;
 };
 
-export default StaffDetail;
+export default DetailStaff;
