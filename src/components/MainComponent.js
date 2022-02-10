@@ -3,7 +3,7 @@ import DetailStaff from "./DetailStaffComponent";
 import { STAFFS, DEPARTMENTS } from "../shared/staffs";
 import Header from "../components/HeaderComponent";
 import Footer from "../components/FooterComponent";
-import StaffList from "../components/StaffsListComponent";
+import StaffList from "./StaffListComponent";
 import { Switch, Route } from "react-router-dom";
 import Department from "./DepartmentComponent";
 import SalaryTable from "./SalaryTableComponent";

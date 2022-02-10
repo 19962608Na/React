@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardImg, CardTitle } from "reactstrap";
 import { Link } from "react-router-dom";
 
-function RenderStaffList({ staff, onClick }) {
+function RenderStaffList({ staff }) {
   return (
     <Card>
       <Link to={`/staff/${staff.id}`}>
@@ -17,7 +17,7 @@ function RenderStaffList({ staff, onClick }) {
 const StaffList = (props) => {
   const staff1 = props.staff.map((staff) => {
     return (
-      <div className="col-lg-2 col-md-4 col-6" key={staff.id}>
+      <div className="col-md-2 col-sm-4 col-6 mb-4" key={staff.id}>
         <RenderStaffList staff={staff} onClick={props.onClick} />
       </div>
     );
@@ -25,7 +25,7 @@ const StaffList = (props) => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-12">
+        <div className="col-12 mb-4">
           <h3 className="staff">Nhân Viên</h3>
           <br />
         </div>

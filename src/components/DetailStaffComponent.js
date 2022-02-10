@@ -7,22 +7,22 @@ function RenderStaff({ staff }) {
   if (staff !== null)
     return (
       <div className=" row">
-        <div className="col-lg-3 col-md-4 col-12">
+        <div className="col-md-3 col-sm-4 col-12 mb-5">
           <img
             className="img"
             src={staff.image}
-            style={{ width: "100%" }}
+            style={{ width: "80%" }}
             alt={staff.name}
           />
         </div>
-        <div key={staff.id} className="col-lg-9 col-md-8 col-12">
+        <div key={staff.id} className="col-md-9 col-sm-8 col-12 mb-5">
           <h3> {staff.name} </h3>
           <p>Ngày sinh: {dateFormat(staff.doB, "dd/mm/yyyy")}</p>
           <p>Ngày vào công ty: {dateFormat(staff.startDate, "dd/mm/yyyy")}</p>
           <p>Phòng ban: {staff.department.name}</p>
           <p>Số ngày nghỉ còn lại: {staff.annualLeave}</p>
           <p>Số ngày đã làm thêm: {staff.overTime}</p>
-        </div>
+        </div>        
       </div>
     );
   else return <div></div>;
@@ -39,7 +39,7 @@ const DetailStaff = (props) => {
             <BreadcrumbItem active>{props.staff.name}</BreadcrumbItem>
           </Breadcrumb>
         </div>
-        <div className="">
+        <div>
           <RenderStaff staff={props.staff} />
         </div>
       </div>
