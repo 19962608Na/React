@@ -13,9 +13,8 @@ function SalaryCalc(salaryScale, overTime) {
   return Math.floor(salaryScale * basicSalary + overTime * overTimeSalary);
 }
 
-const SalaryTable = (props) => {  
- 
-  const staff = props.StaffList.map((staff) => {
+function SalaryTable(props) {
+  const staff = props.staffList.map((staff) => {
     return (
       <div className="col-12 col-sm-6 col-md-4" key={staff.id}>        
         <div className="card">
@@ -52,4 +51,5 @@ const SalaryTable = (props) => {
     </div>
   );
 }
+
 export default SalaryTable;
