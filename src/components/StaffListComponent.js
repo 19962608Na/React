@@ -7,15 +7,17 @@ function RenderStaffList({ staff }) {
     <Card>
       <Link to={`/staff/${staff.id}`}>
         <CardImg width="100%" src={staff.image} alt={staff.name} />
-        <div>
+        <div className="row justify-content-center">
           <CardTitle>{staff.name}</CardTitle>
         </div>
       </Link>
     </Card>
   );
 }
+
+
 const StaffList = (props) => {
-  const staff1 = props.staff.map((staff) => {
+  const staff = props.staff.map((staff) => {
     return (
       <div className="col-md-2 col-sm-4 col-6 mb-4" key={staff.id}>
         <RenderStaffList staff={staff} onClick={props.onClick} />
@@ -31,7 +33,7 @@ const StaffList = (props) => {
         </div>
       </div>
       <div className="row" key={props.id}>
-        {staff1}
+        {staff}
       </div>
     </div>
   );

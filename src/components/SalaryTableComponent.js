@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import {  
   Card,
   CardText,  
   BreadcrumbItem,
-  Breadcrumb  
+  Breadcrumb   
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
-function SalaryTable(props) {
-  const [staffList] = useState(props.staffList);
-  function salaryCalc(salaryScale, overTime) {
-    const basicSalary = 3000000;
-    const overTimeSalary = 200000;
-    return Math.floor(salaryScale * basicSalary + overTime * overTimeSalary);
-  } 
+function SalaryCalc(salaryScale, overTime) {
+  const basicSalary = 3000000;
+  const overTimeSalary = 200000;
+  return Math.floor(salaryScale * basicSalary + overTime * overTimeSalary);
+}
 
-  const staff = staffList.map((staff) => {
+const SalaryTable = (props) => {  
+ 
+  const staff = props.StaffList.map((staff) => {
     return (
       <div className="col-12 col-sm-6 col-md-4" key={staff.id}>        
         <div className="card">
@@ -27,16 +27,17 @@ function SalaryTable(props) {
         <Card className="p-1">
           <CardText>
             Lương:{" "}
-            {salaryCalc(staff.salaryScale, staff.overTime)}
+            {SalaryCalc(staff.salaryScale, staff.overTime)}
             {" "}
             VND
           </CardText>
         </Card>
-      </div>
-    </div>
+        </div>
+        </div>
       </div>
     );
   });
+
 
   return (
     <div className="container-fluid">
@@ -45,10 +46,10 @@ function SalaryTable(props) {
           <Link to="/staff">Nhân Viên</Link>
         </BreadcrumbItem>
         <BreadcrumbItem active>Bảng Lương</BreadcrumbItem>
-      </Breadcrumb>      
+      </Breadcrumb> 
+      
       <div className="row">{staff}</div>
     </div>
   );
 }
-
 export default SalaryTable;
