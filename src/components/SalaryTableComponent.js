@@ -16,7 +16,7 @@ function SalaryCalc(salaryScale, overTime) {
 function SalaryTable(props) {
   const staff = props.staffList.map((staff) => {
     return (
-      <div className="col-12 col-sm-6 col-md-4" key={staff.id}>        
+      <div className="col-12 col-sm-6 col-md-4 mb-3" key={staff.id}>        
         <div className="card">
         <div className="card-body">      
         <h2 className="py-3 card-title">{staff.name}</h2>
@@ -45,8 +45,7 @@ function SalaryTable(props) {
           <Link to="/staff">Nhân Viên</Link>
         </BreadcrumbItem>
         <BreadcrumbItem active>Bảng Lương</BreadcrumbItem>
-      </Breadcrumb> 
-      
+      </Breadcrumb>       
       <div className="row">{staff}</div>
     </div>
   );

@@ -36,17 +36,17 @@ address{
 }
 
 h5.card-title {
-  margin-top: 12px;
+  margin-top: 10px;
   text-align: center;
   background-color: #ccc;
 }
 .p-3.card {
   margin: 12px;
-  background-color: #ecf5b8;
+  background-color: #ecf5b8;  
 }
 
 .nav-link:hover {
-  color: rgba(243, 73, 220, 0.781) !important;
+  color: rgba(235, 243, 120, 0.781) !important;
 }
 
 .container {
@@ -55,3 +55,8 @@ h5.card-title {
 button.btn.btn-secondary {
   margin-left: 12px;
 }
+
+h2 {
+  color: red;
+}
+
