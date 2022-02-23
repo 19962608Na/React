@@ -10,6 +10,7 @@ class Header extends Component  {
         
         this.state = {
             isNavOpen: false,
+            //b2: biến boolean này sẽ theo dõi trạng thái của phương thức có đang mở hay k
             isModalOpen: false
         };
         this.toggleNav = this.toggleNav.bind(this);
@@ -22,15 +23,19 @@ class Header extends Component  {
           isNavOpen: !this.state.isNavOpen
         });
       }
-
+        //b3: để chuyển đổi phương thức ở b2 + ràng buộc hàm toggleModal này trên constructor
+    //chuyển đổi giá trị isModalOpen bất cứ khi nào toggleModal đc gọi, toggleModal sẽ đc gọi ở form modal
       toggleModal() {
         this.setState({
           isModalOpen: !this.state.isModalOpen
         });
       }
 
+        //b5: để triển khai uncontrolled form thì cần phương thưucs handleLogin nhận sự kiện dưới dạng tham số, nhớ ràng buộc trên state
       handleLogin(event) {
+          //đóng modal
         this.toggleModal();
+          //thông báo cho users để xác minh form đã đc gửi. truy xuất giá trị trực tiếp từ DOM
         alert("Username: " + this.username.value + " Password: " + this.password.value
             + " Remember: " + this.remember.checked);
         event.preventDefault();
@@ -59,6 +64,8 @@ class Header extends Component  {
                                 <NavLink className="nav-link" to='/contactus'><span className="fa fa-address-card fa-lg"></span> Contact Us</NavLink>
                             </NavItem>
                             </Nav>
+                            //b4: gọi phương thức toggleModal bằng 1 button. ml-auto: đặt lề trái nhiều nhất có thể => đẩy sang bên phải
+                            //nút này dùng để hiển thị và ẩn modal
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
                                     <Button outline onClick={this.toggleModal}><span className="fa fa-sign-in fa-lg"></span> Login</Button>
@@ -77,13 +84,17 @@ class Header extends Component  {
                         </div>
                     </div>
                 </div>
+                //b1: tạo modal
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
+                    //thiết lập uncontrolled form bên trong modalbody
                     <ModalBody>
+                        //triển khai chức năng đăng nhập
                     <Form onSubmit={this.handleLogin}>
                             <FormGroup>
                                 <Label htmlFor="username">Username</Label>
                                 <Input type="text" id="username" name="username"
+                                       //b6: lấy các giá trị từ form(cách để truy xuất thông tin từ các giá trị đầu vào)
                                     innerRef={(input) => this.username = input} />
                             </FormGroup>
                             <FormGroup>
