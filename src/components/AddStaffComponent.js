@@ -323,7 +323,7 @@ class AddStaff extends Component {
                   <Col className="col-7 offset-5">
                     <Button
                       type="submit"
-                      color="secondary"
+                      color="primary"
                       onClick={this.toggleModal}
                     >
                       Thêm
@@ -334,7 +334,7 @@ class AddStaff extends Component {
             </Form>
           </ModalBody>
         </Modal>
-        <FormGroup className="add ">
+        <FormGroup className="add">
           <Button color="secondary" onClick={this.toggleModal}>
             <span className="fa fa-plus" aria-hidden="true"></span>
           </Button>

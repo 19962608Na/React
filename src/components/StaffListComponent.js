@@ -51,7 +51,7 @@ const StaffList = (props) => {
   // Duyệt các phần tử trong mảng
   const staff = searchStaff.map((staff) => {
     return (
-      <div className="col-md-2 col-sm-4 col-6" key={staff.id}>
+      <div className="col-md-2 col-sm-4 col-6 mb-3" key={staff.id}>
         <RenderStaffList staff={staff} onClick={props.onClick} />
       </div>
     );

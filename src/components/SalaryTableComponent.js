@@ -71,17 +71,14 @@ function SalaryTable(props) {
         </BreadcrumbItem>
         <BreadcrumbItem active>Bảng Lương</BreadcrumbItem>
       </Breadcrumb>  
-      <div id="sort" className="row">
-        <div className="col-12">
-          <h5>Sắp Xếp Theo Lương</h5>
-        </div>
-        <div className="col-12">
+      <div id="sort" className="row"> 
+        <div className="col-12 col-sm-6 col-md-4 mb-3">
+          <h5>Sắp Xếp Theo Lương</h5>        
           <Button onClick={() => sortSalary("increase")}>
-            <span className="fa fa-sort-amount-asc"></span> Lương Thấp
+            <span className="fa fa-sort-amount-asc"></span> Tăng
           </Button>
-
           <Button onClick={() => sortSalary("decrease")}>
-            <span className="fa fa-sort-amount-desc"></span> Lương Cao
+            <span className="fa fa-sort-amount-desc"></span> Giảm
           </Button>
         </div>
       </div>     
