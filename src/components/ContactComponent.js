@@ -14,6 +14,8 @@ class Contact extends Component {
             agree: false,
             contactType: 'Tel.',
             message: '',
+            //b1: theo dõi xem liệu 1 trường cụ thể đã được gọi đến hay chưa. Lý do:nếu giá trị form không có (ng dùng k thay đổi bất kì giá trị nào) thì k nên dùng
+            //CHỉ sau khi người dùng thực hiện lần thay đổi đầu tiên thành bất kì input box nào sau đó bạn có thể xác nhận giá trị input box cụ thể ==> sẽ thành true
             touched: {
                 firstname: false,
                 lastname: false,
@@ -42,14 +44,21 @@ class Contact extends Component {
         alert('Current State is: ' + JSON.stringify(this.state));
         event.preventDefault();
     }
-
+    
+    //b2: để xử lý phần touched từ b1, chúng ta thêm hàm handleBlur sẽ cho biết cụ thể trường nào đã thay đổi. Vì vậy điều này sẽ nhận được 1 sự kiện (evt) tương ứng ở đây  
+   
     handleBlur = (field) => (evt) => {
+        //Khi điều đó xảy ra, chúng ta sẽ đặt giá trị touched tương ứng. tìm hiểu thêm về dấu 3 chấm.
         this.setState({
+             //bất kể state hiện tại là gì, tôi sẽ sửa đổi trường cụ thể đó thành true. 
+            //chỉ cần input box thay đổi thì sẽ thành true. việc làm này để users có thể theo dõi input box đã đc sửa đổi
             touched: { ...this.state.touched, [field]: true }
         });
     }
-
+    
+    //b3:xác thực form mỗi khi form được điền vào, thiết lập hàm validate trong current
     validate(firstname, lastname, telnum, email) {
+        // xây dựng 1 đối tượng js gọi là errors, ban đầu 4 giá trị được nằm trong chuỗi (''), nếu có lỗi, giá trị cụ thể đó sẽ được đặt thành thông báo có lỗi ở đó
         const errors = {
             firstname: '',
             lastname: '',
@@ -57,6 +66,7 @@ class Contact extends Component {
             email: ''
         };
 
+        //nếu user đã nhập 1 giá trị với ít hơn 3 kí tự tại firstname thì chúng ta sẽ gọi đến error.1stname
         if (this.state.touched.firstname && firstname.length < 3)
             errors.firstname = 'First Name should be >= 3 characters';
         else if (this.state.touched.firstname && firstname.length > 10)
@@ -78,6 +88,8 @@ class Contact extends Component {
     }
   
     render() {
+        //b4: gọi hàm validate ở đây vì bất cứ khi nào có sự thay đổi trong các trường đầu vào của bạn, form của bạn sẽ được render
+        //và vì vậy đó sẽ là thời gian để bạn thực hiện kiểm tra
         const errors = this.validate(this.state.firstname, this.state.lastname, this.state.telnum, this.state.email);
         return(
             <div className="container">
@@ -133,6 +145,7 @@ class Contact extends Component {
                                         invalid={errors.firstname !== ''}
                                         onBlur={this.handleBlur('firstname')}
                                         onChange={this.handleInputChange} />
+                                            //b5: thêm formfeedback
                                     <FormFeedback>{errors.firstname}</FormFeedback>
                                 </Col>
                             </FormGroup>
