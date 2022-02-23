@@ -22,7 +22,7 @@ class Header extends Component {
         <Navbar dark expand="md">
           <div className="container">
             <NavbarToggler onClick={this.toggleNav} />
-            <NavLink className="mr-auto" to="/staff">
+            <NavLink className="mr-auto" to="/">
               <img
                 src="assets/images/logo.png"
                 height="30"

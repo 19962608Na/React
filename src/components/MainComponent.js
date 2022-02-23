@@ -4,7 +4,7 @@ import { STAFFS, DEPARTMENTS } from "../shared/staffs";
 import Header from "../components/HeaderComponent";
 import Footer from "../components/FooterComponent";
 import StaffList from "./StaffListComponent";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Department from "./DepartmentComponent";
 import SalaryTable from "./SalaryTableComponent";
 
@@ -17,13 +17,17 @@ class Main extends Component {
     };
   }
 
+  onAddStaff = (newStaff) => {
+    this.setState({ staffs: [...this.state.staffs, newStaff] });
+  };
+
   render() {
     const StaffId = ({ match }) => {
       return (
         <DetailStaff
-          staff={this.state.staffs.find(
-            (staff) => staff.id === +match.params.id
-          )}
+          staff={this.state.staffs.filter(
+            (staff) => staff.id === parseInt(match.params.id, 10)
+          )[0]}
         />
       );
     };
@@ -34,19 +38,10 @@ class Main extends Component {
         <Switch>
           <Route
             exact
-            path="/"
-            component={() => <StaffList staff={this.state.staffs} />}
-          />
-          <Route
-            exact
             path="/staff"
-            component={() => <StaffList staff={this.state.staffs} />}
+            component={() => <StaffList staff={this.state.staffs}  onAddStaff={this.onAddStaff} />}
           />
-          <Route
-            exact
-            path="/staff"
-            component={() => <StaffId staff={this.state.staffs} />}
-          />
+          
           <Route exact path="/staff/:id" component={StaffId} />
           <Route
             exact
@@ -57,6 +52,7 @@ class Main extends Component {
             path="/salary"
             component={() => <SalaryTable staffList={this.state.staffs} />}
           />
+          <Redirect to="/staff" />
         </Switch>
         <Footer />
       </div>

@@ -56,7 +56,31 @@ button.btn.btn-secondary {
   margin-left: 12px;
 }
 
-h2 {
-  color: red;
+.form {
+  display: flex;
+  margin-top: 14px;
+  width: 105%;
+}
+.add.form-group {
+  margin: 0.9rem 0 0 5.5rem;
+}
+button.search.btn.btn-warning {
+  margin-left: 12px;
+}
+button.btn.btn-danger {
+  width: 52px;
+}
+
+.jumbotron {
+  padding: 70px 30px 70px 30px;
+  margin: 0px auto;
+}
+
+.container-fluid {
+  margin-left: 0 !important;
+}
+button.btn.btn-secondary {
+  margin-left: 12px;
+  width: 52px;
 }
 
