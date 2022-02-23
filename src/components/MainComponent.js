@@ -33,6 +33,29 @@ class Main extends Component {
     };
 
     return (
+      <div>
+        <Header />
+        <Switch>
+          <Route
+            exact
+            path="/staff"
+            component={() => <StaffList staff={this.state.staffs}  onAddStaff={this.onAddStaff} />}
+          />
+          
+          <Route exact path="/staff/:id" component={StaffId} />
+          <Route
+            exact
+            path="/department"
+            component={() => <Department department={this.state.department} />}
+          />
+          <Route
+            path="/salary"
+            component={() => <SalaryTable staffList={this.state.staffs} />}
+          />
+          <Redirect to="/staff" />
+        </Switch>
+        <Footer />
+      </div>
       
     );
   }
