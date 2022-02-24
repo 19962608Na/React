@@ -9,8 +9,10 @@ import About from './AboutComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 
+//cần xác định hàm nào lấy state dưới dang tham số ở đây
 const mapStateToProps = state => {
   return {
+    //4 thằng này trơe thành props cho maincpn
     dishes: state.dishes,
     comments: state.comments,
     promotions: state.promotions,
@@ -56,5 +58,5 @@ class Main extends Component {
     );
   }
 }
-
+//kết nối maincpn với redux store
 export default withRouter(connect(mapStateToProps)(Main));
