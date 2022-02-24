@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import DetailStaff from "./DetailStaffComponent";
-
 import Header from "../components/HeaderComponent";
 import Footer from "../components/FooterComponent";
 import StaffList from "./StaffListComponent";
@@ -9,6 +8,7 @@ import SalaryTable from "./SalaryTableComponent";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import {connect} from "react-redux";
 
+// Khai báo state reducer
 const mapStateToProps = state => {
   return {
     staffs: state.staffs,
