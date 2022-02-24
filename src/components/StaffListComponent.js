@@ -66,7 +66,7 @@ const StaffList = (props) => {
           <AddStaff staffList={props.staff} onStaff={onAddStaff} />
         </div>
         {/* Form tìm kiếm nhân viên */}
-        <div className=" col-12 col-sm-6 col-md-8 mb-3">
+        <div className="col-12 col-sm-6 col-md-8 mb-3">
           <Form onSubmit={submitSearch} className="form">
             <Input
               type="text"
