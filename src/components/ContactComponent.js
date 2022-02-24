@@ -4,7 +4,10 @@ import { Breadcrumb, BreadcrumbItem,
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
 
+//b1: tạo hàm để xác thực
 const required = (val) => val && val.length;
+//!val: k kiểm tra val hoặc ||val.length nhỏ hơn hoặc bằng len. vì vậy nó đảm bảo rằng length nhỏ hơn
+//hoặc bằng giá trị độ dài đc chỉ định làm tham số
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
 const isNumber = (val) => !isNaN(Number(val));
