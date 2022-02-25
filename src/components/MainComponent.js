@@ -19,14 +19,16 @@ const mapStateToProps = state => {
 class Main extends Component {
   constructor(props) {
     super(props);
-    
-  }
+    }
 
-  onAddStaff = (newStaff) => {
-    this.setState({ staffs: [...this.props.staffs, newStaff] });
+  onAddStaff (newStaff) {
+    
+    this.setState({staffs: [...this.state.staffs, newStaff]} );
+    
   };
 
   render() {
+    
     const StaffId = ({ match }) => {
       return (
         <DetailStaff
@@ -51,7 +53,7 @@ class Main extends Component {
           <Route
             exact
             path="/department"
-            component={() => <Department department={this.props.department} />}
+            component={() => <Department departments={this.props.departments} />}
           />
           <Route
             path="/salary"

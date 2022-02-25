@@ -11,6 +11,7 @@ import {
 import { Control, LocalForm, Errors } from "react-redux-form";
 import { DEPARTMENTS } from "../shared/staffs";
 
+//tạo hàm xác thực
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
 const minLength = (len) => (val) => val && val.length >= len;
@@ -35,22 +36,22 @@ class AddStaff extends Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-
     this.toggleModal = this.toggleModal.bind(this);
   }
 
+    // Tạo hàm đóng mở form thêm nhân viên
   toggleModal() {
     this.setState({
       isModalOpen: !this.state.isModalOpen,
     });
   }
 
+    // sự kiện khi người dùng thêm nhân viên
   handleSubmit(values) {
     alert("Current State is: " + JSON.stringify(values));
-
-    const department = DEPARTMENTS.filter(
-      (department) => department.id === this.state.department
-    )[0];
+    const department = DEPARTMENTS.find(
+      (department) => department.id === values.department
+    );
     const newStaff = {
       id: this.props.staffList.length,
       name: values.name,
@@ -62,17 +63,21 @@ class AddStaff extends Component {
       overTime: values.overTime,
       image: "/assets/images/alberto.png",
     };
+    const staffs = [...this.props.staffList,...[newStaff]]
 
+      //điều kiện người dùng nhập đủ trường
     if (newStaff.name === "") {
-      alert("Vui lòng nhập các trường");
+      alert("Vui lòng nhập thông tin");
     } else {
-      this.props.onStaff(newStaff);
+      this.props.onStaff(staffs);
+      console.log(staffs);
     }
   }
 
   render() {
-    return (
+    return (      
       <>
+        {/* Form thêm nhân viên */}
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>Thêm nhân viên</ModalHeader>
           <ModalBody>
@@ -112,10 +117,11 @@ class AddStaff extends Component {
                   Ngày sinh
                 </Label>
                 <Col md={7}>
-                  <Control.text
+                  <Control
+                    type="date"
                     model=".doB"
                     className="form-control"
-                    type="date"
+                    
                     id="doB"
                     name="doB"
                     validators={{
@@ -138,10 +144,11 @@ class AddStaff extends Component {
                   Ngày vào công ty
                 </Label>
                 <Col md={7}>
-                  <Control.text
+                  <Control
+                    type="date"
                     model=".startDate"
                     className="form-control"
-                    type="date"
+                    
                     id="startDate"
                     name="startDate"
                     validators={{
@@ -241,8 +248,7 @@ class AddStaff extends Component {
                 <Col md={7}>
                   <Control.text
                     model=".overTime"
-                    className="form-control"
-                    type="number"
+                    className="form-control"                    
                     id="overTime"
                     name="overTime"
                     placeholder="ex: 1.5"
@@ -268,7 +274,7 @@ class AddStaff extends Component {
                   <Button
                     type="submit"
                     color="primary"
-                    onClick={this.toggleModal}
+                    onClick={this.toggleModal} 
                   >
                     Thêm
                   </Button>
