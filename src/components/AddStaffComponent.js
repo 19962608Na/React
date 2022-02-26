@@ -34,8 +34,6 @@ class AddStaff extends Component {
         salaryScale: false,
         annualLeave: false,
         overTime: false,
-        doB: false,
-        startDate: false,
       },
     };
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -44,12 +42,14 @@ class AddStaff extends Component {
     this.toggleModal = this.toggleModal.bind(this);
   }
 
+  // sự kiện handleBlur khi người dùng di chuyển ra khỏi ô input và ko nhập gì
   handleBlur = (field) => (e) => {
     this.setState({
       touched: { ...this.state.touched, [field]: true },
     });
   };
 
+  // sự kiện lắng nghe người dùng nhập value
   handleInputChange(event) {
     const target = event.target;
     const value = target.value;
@@ -60,29 +60,28 @@ class AddStaff extends Component {
     });
   }
 
+  // Hàm tạo đóng mở form thêm nhân viên
   toggleModal() {
     this.setState({
       isModalOpen: !this.state.isModalOpen,
     });
   }
 
-  // validate
-  validate(name, salaryScale, annualLeave, overTime, doB, startDate) {
+  // validate khi người dùng nhập không đúng két quả
+  validate(name, salaryScale, annualLeave, overTime) {
     const errors = {
       name: "",
       salaryScale: "",
       annualLeave: "",
       overTime: "",
-      doB: "",
-      startDate: "",
     };
-    // name
+    // validate name
     if (this.state.touched.name && name.length < 3)
       errors.name = "Yêu cầu nhập nhiều hơn 3 ký tự";
     else if (this.state.touched.name && name.length > 30)
       errors.name = "Yêu cầu nhập ít hơn 30 ký tự";
 
-    // annualLeave
+    // validate annualLeave
     if (this.state.touched.annualLeave && annualLeave.length > 3)
       errors.annualLeave = "Số ngày nghỉ không nhiều hơn 3 kí tự";
     else if (
@@ -92,15 +91,7 @@ class AddStaff extends Component {
       errors.annualLeave =
         "Số ngày nghỉ của bạn phải có dấu chấm ở giữa (ví dụ 1.5)";
 
-    //doB
-    if (
-      this.state.touched.doB &&
-      this.state.touched.startDate &&
-      doB >= startDate
-    )
-      errors.startDate = "ngày vào công ty phải sau ngày sinh";
-
-    // salaryScale
+    // validate salaryScale
     if (
       (this.state.touched.salaryScale && salaryScale.length > 3.0) ||
       salaryScale < 1.0
@@ -112,7 +103,7 @@ class AddStaff extends Component {
     )
       errors.salaryScale = "Hệ số lương phải có dấu chấm ở giữa (ví dụ 1.5)";
 
-    // overTime
+    // validate overTime
     if (this.state.touched.overTime && overTime.length > 3)
       errors.overTime = "Số ngày làm thêm không quá 3 kí tự";
     else if (
@@ -123,8 +114,8 @@ class AddStaff extends Component {
     return errors;
   }
 
+  // sự kiện handleSubmit khi người dùng thêm nhân viên
   handleSubmit(e) {
-    alert("Current State is: " + JSON.stringify(this.state));
     e.preventDefault();
 
     const department = DEPARTMENTS.find(
@@ -142,6 +133,7 @@ class AddStaff extends Component {
       image: "/assets/images/alberto.png",
     };
 
+    // Đièu kiện người dùng nhập đầy đủ các trường
     if (newStaff.name === "") {
       alert("Vui lòng nhập các trường");
     } else {
@@ -150,21 +142,22 @@ class AddStaff extends Component {
   }
 
   render() {
+    // Khởi tạo biến validate
     const errors = this.validate(
       this.state.name,
       this.state.salaryScale,
       this.state.annualLeave,
-      this.state.overTime,
-      this.state.doB,
-      this.state.startDate
+      this.state.overTime
     );
 
     return (
       <>
+        {/* Form thêm nhân viên */}
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>Thêm nhân viên</ModalHeader>
           <ModalBody>
             <Form onSubmit={this.handleSubmit}>
+              {/* Full name */}
               <FormGroup>
                 <Row>
                   <Label htmlFor="name" md={5}>
@@ -187,6 +180,7 @@ class AddStaff extends Component {
                 </Row>
               </FormGroup>
 
+              {/* Date of birth */}
               <FormGroup>
                 <Row>
                   <Label htmlFor="doB" md={5}>
@@ -199,14 +193,12 @@ class AddStaff extends Component {
                       name="doB"
                       value={this.state.doB}
                       onChange={this.handleInputChange}
-                      onBlur={this.handleBlur("doB")}
-                      valid={errors.doB === ""}
-                      invalid={errors.doB !== ""}
                     />
                   </Col>
                 </Row>
               </FormGroup>
 
+              {/* Started Date*/}
               <FormGroup>
                 <Row>
                   <Label htmlFor="startDate" md={5}>
@@ -219,15 +211,12 @@ class AddStaff extends Component {
                       name="startDate"
                       value={this.state.startDate}
                       onChange={this.handleInputChange}
-                      onBlur={this.handleBlur("startDate")}
-                      valid={errors.startDate === ""}
-                      invalid={errors.startDate !== ""}
                     />
-                    <FormFeedback>{errors.startDate}</FormFeedback>
                   </Col>
                 </Row>
               </FormGroup>
 
+              {/* Department */}
               <FormGroup>
                 <Row className="form-group">
                   <Label htmlFor="department" md={5}>
@@ -252,6 +241,7 @@ class AddStaff extends Component {
                 </Row>
               </FormGroup>
 
+              {/* Salary Scale*/}
               <FormGroup>
                 <Row className="form-group">
                   <Label htmlFor="salaryScale" md={5}>
@@ -274,6 +264,7 @@ class AddStaff extends Component {
                 </Row>
               </FormGroup>
 
+              {/* annual Leave*/}
               <FormGroup>
                 <Row className="form-group">
                   <Label htmlFor="annualLeave" md={5}>
@@ -296,6 +287,7 @@ class AddStaff extends Component {
                 </Row>
               </FormGroup>
 
+              {/* Overtime*/}
               <FormGroup>
                 <Row className="form-group">
                   <Label htmlFor="overTime" md={5}>
@@ -317,6 +309,7 @@ class AddStaff extends Component {
                   </Col>
                 </Row>
               </FormGroup>
+
               {/* Submit Button */}
               <FormGroup>
                 <Row className="form-group">
@@ -334,8 +327,8 @@ class AddStaff extends Component {
             </Form>
           </ModalBody>
         </Modal>
-        <FormGroup className="add">
-          <Button color="secondary" onClick={this.toggleModal}>
+        <FormGroup className="add ">
+          <Button color="danger" onClick={this.toggleModal}>
             <span className="fa fa-plus" aria-hidden="true"></span>
           </Button>
         </FormGroup>
