@@ -127,9 +127,9 @@ class AddStaff extends Component {
     alert("Current State is: " + JSON.stringify(this.state));
     e.preventDefault();
 
-    const department = DEPARTMENTS.filter(
+    const department = DEPARTMENTS.find(
       (department) => department.id === this.state.department
-    )[0];
+    );
     const newStaff = {
       id: this.props.staffList.length,
       name: this.state.name,
