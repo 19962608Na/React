@@ -73,16 +73,13 @@ button.btn.btn-secondary {
 .container-fluid {
   margin-left: 0 !important;
 }
-button.btn.btn-secondary { 
-  margin-top: 18px;
-  margin-left: 12px;
-  width: 52px;
+button.btn.btn-secondary {
+  width: 50px;
 }
 
 button.search.btn.btn-secondary {
   margin-top: 0px !important;
   margin-left: 12px;
 }
-
 
 
