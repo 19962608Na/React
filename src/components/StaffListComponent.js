@@ -53,52 +53,52 @@ class StaffList extends React.Component {
     window.location.pathname = `/search/${searchName}`;
   }
 
-  //Handle Event of Sorting Staff List
-  setSortBy(sortBy) {
-    this.setState({sortBy: sortBy});
-  }
+  // //Handle Event of Sorting Staff List
+  // setSortBy(sortBy) {
+  //   this.setState({sortBy: sortBy});
+  // }
 
-  sortStaffItem(sortBy) {
-    const staffs = this.staffs;
-    switch(sortBy) {
-      default : {
-        staffs.sort((staff1, staff2) => staff1.id - staff2.id);
-        break;
-      }
-      case 'StaffIdReverse' : {
-        staffs.sort((staff1, staff2) => staff2.id - staff1.id);
-        break;
-      }
-      case 'StaffName' : {
-        staffs.sort((staff1, staff2) => {
-          let name1 = staff1.name.split(' ');
-          let firstname1 = name1[name1.length - 1].toUpperCase();
-          let name2 = staff2.name.split(' ');
-          let firstname2 = name2[name1.length - 1].toUpperCase();
-          if (firstname1 < firstname2) {return -1};
-          if (firstname1 > firstname2) {return 1};
-          return 0;
-        });
-        break;
-      }
-      case 'StaffNameReverse' : {
-        staffs.sort((staff1, staff2) => {
-          let name1 = staff1.name.split(' ');
-          let firstname1 = name1[name1.length - 1].toUpperCase();
-          let name2 = staff2.name.split(' ');
-          let firstname2 = name2[name1.length - 1].toUpperCase();
-          if (firstname1 < firstname2) {return 1};
-          if (firstname1 > firstname2) {return -1};
-          return 0;
-        });
-        break;
-      }
-    }
-  }
+  // sortStaffItem(sortBy) {
+  //   const staffs = this.staffs;
+  //   switch(sortBy) {
+  //     default : {
+  //       staffs.sort((staff1, staff2) => staff1.id - staff2.id);
+  //       break;
+  //     }
+  //     case 'StaffIdReverse' : {
+  //       staffs.sort((staff1, staff2) => staff2.id - staff1.id);
+  //       break;
+  //     }
+  //     case 'StaffName' : {
+  //       staffs.sort((staff1, staff2) => {
+  //         let name1 = staff1.name.split(' ');
+  //         let firstname1 = name1[name1.length - 1].toUpperCase();
+  //         let name2 = staff2.name.split(' ');
+  //         let firstname2 = name2[name1.length - 1].toUpperCase();
+  //         if (firstname1 < firstname2) {return -1};
+  //         if (firstname1 > firstname2) {return 1};
+  //         return 0;
+  //       });
+  //       break;
+  //     }
+  //     case 'StaffNameReverse' : {
+  //       staffs.sort((staff1, staff2) => {
+  //         let name1 = staff1.name.split(' ');
+  //         let firstname1 = name1[name1.length - 1].toUpperCase();
+  //         let name2 = staff2.name.split(' ');
+  //         let firstname2 = name2[name1.length - 1].toUpperCase();
+  //         if (firstname1 < firstname2) {return 1};
+  //         if (firstname1 > firstname2) {return -1};
+  //         return 0;
+  //       });
+  //       break;
+  //     }
+  //   }
+  // }
 
   render() {
     this.staffs = JSON.parse(JSON.stringify(this.props.staffs));
-    this.sortStaffItem(this.state.sortBy);
+    // this.sortStaffItem(this.state.sortBy);
     
     const stafflist = this.props.staffsLoading ? <Loading /> : 
       this.props.staffsErrMess ? <h4>{this.props.staffsErrMess}</h4> :
@@ -145,7 +145,7 @@ class StaffList extends React.Component {
                     innerRef={(input) => this.search = input} />
                 </Col>
                 <Col xs="auto">
-                  <Button type="submit" value="submit" color="primary">
+                  <Button type="submit" value="submit" color="success">
                     <span className="fa fa-search"></span> Search
                   </Button>
                 </Col>
@@ -155,7 +155,7 @@ class StaffList extends React.Component {
         </div>
         <hr />
         {/* ------- Sort Form ------- */}
-        <div className="row mb-3">
+        {/* <div className="row mb-3">
           <Form inline className="col-12">
             <FormGroup>
               <Label className="mr-2">
@@ -179,7 +179,7 @@ class StaffList extends React.Component {
               </Input>
             </FormGroup>
           </Form>
-        </div>
+        </div> */}
         {/* ------- Render Staff List ------- */}
         <div className="row">
           {stafflist}
