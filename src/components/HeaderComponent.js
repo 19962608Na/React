@@ -17,14 +17,14 @@ class Header extends Component {
     });
   }
 
-  changeUrlSearch(searchName) {
-    console.log(searchName)
-    window.location.pathname = `/search/${searchName}`
-  }
+  // changeUrlSearch(searchName) {
+  //   console.log(searchName)
+  //   window.location.pathname = `/search/${searchName}`
+  // }
 
   render() {
     return (
-      <Navbar dark expand="lg">
+      <Navbar dark expand="md">
         <div className="container-fluid">
           <NavbarToggler onClick={this.toggleNav} />
           <NavbarBrand className="mr-auto order-first" href="/">

@@ -77,7 +77,7 @@ export const fetchStaffs = () => (dispatch) => {
     payload: errMess
   });
   
-  //Fetch Staffs of A Department -----------------------------------------------------------
+  //Department
   export const fetchDeptStaffs = (DeptId) => (dispatch) => {
     dispatch(deptStaffsLoading(true));
   
