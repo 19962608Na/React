@@ -175,11 +175,7 @@ class StaffDetail extends React.Component {
                         <Control.input model=".doB" type="date" id="doB" name="doB"
                           className="form-control"
                           value={dateFormat(this.state.doB, "yyyy-mm-dd")}
-                          onChange={this.handleOnChange}
-                          // value={this.state.tenState}
-                          // validators={{ 
-                          //   required
-                          // }}
+                          onChange={this.handleOnChange}                          
                         />
                         <Errors
                           className="text-danger"
@@ -197,11 +193,7 @@ class StaffDetail extends React.Component {
                         <Control.input model=".startDate" type="date" id="startDate" name="startDate"
                           className="form-control"
                           value={dateFormat(this.state.startDate, "yyyy-mm-dd")}
-                          onChange={this.handleOnChange}
-                          // value={this.state.tenState}
-                          // validators={{
-                          //   required
-                          // }}
+                          onChange={this.handleOnChange}                          
                         />
                         <Errors
                           className="text-danger"
@@ -289,7 +281,7 @@ class StaffDetail extends React.Component {
                     </Row>
                     <Row className="form-group">
                       <Col md={{size: 8, offset: 4}}>
-                        <Button type="submit" color="primary">Cập nhập</Button>
+                        <Button type="submit" color="success">Cập nhập</Button>
                       </Col>
                     </Row>
                   </LocalForm>

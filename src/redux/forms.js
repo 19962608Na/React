@@ -5,5 +5,5 @@ export const InitialNewStaff = {
     startDate: '',
     annualLeave: 0,
     overTime: 0,
-    image: '/asset/images/alberto.png'
+    image: '/asset/images/avatar.png'
   }

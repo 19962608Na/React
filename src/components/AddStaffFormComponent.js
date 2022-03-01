@@ -25,7 +25,7 @@ class AddStaffForm extends React.Component {
         salaryScale: salaryScale,
         annualLeave: annualLeave,
         overTime: overTime,
-        image: '/asset/images/alberto.png',
+        image: '/asset/images/avatar.png',
         salary: salary
       }
 
