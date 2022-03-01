@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardImg, CardBody, CardTitle, Form, FormGroup, Label, Input, Button, Col, Modal, ModalHeader, ModalBody, Row } from 'reactstrap';
+import { Card, CardImg, CardBody, CardTitle, Form, FormGroup, Input, Button, Col, Modal, ModalHeader, ModalBody} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { FadeTransform } from 'react-animation-components'
 import { Loading } from './LoadingComponent';
