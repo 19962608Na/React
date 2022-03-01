@@ -5,10 +5,7 @@ import { Loading } from './LoadingComponent';
 import { RenderStaffItem } from './StaffListComponent';
 
 class DeptStaffList extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
+  
   componentDidMount() {
     this.props.fetchDeptStaffs(this.props.deptId)
   }
