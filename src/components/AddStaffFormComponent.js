@@ -65,8 +65,7 @@ class AddStaffForm extends React.Component {
           <Label htmlFor="doB" md={4}>Ngày sinh</Label>
           <Col md={8}>
             <Control.input model=".doB" type="date" id="doB" name="doB"
-              className="form-control"
-              // value={this.state.tenState}
+              className="form-control"              
               validators={{ 
                 required
               }}
@@ -173,7 +172,7 @@ class AddStaffForm extends React.Component {
         </Row>
         <Row className="form-group">
           <Col md={{size: 8, offset: 4}}>
-            <Button type="submit" color="primary">Thêm</Button>
+            <Button type="submit" color="success">Thêm</Button>
           </Col>
         </Row>
       </Form>

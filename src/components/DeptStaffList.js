@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Loading } from './LoadingComponent';
-import StaffList, { RenderStaffItem } from './StaffListComponent';
+import { RenderStaffItem } from './StaffListComponent';
 
 class DeptStaffList extends React.Component {
   constructor(props) {
