@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route, Redirect, Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actions } from 'react-redux-form';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
@@ -58,13 +59,7 @@ class Main extends Component {
           </div>
         </div>);
       } else {
-        // const stafflist = staffs.map((staff) => {
-        //   return (
-        //     <div key={staff.id} className="col-6 col-md-4 col-lg-2 my-1">
-        //       <RenderStaffItem staff={staff}/>
-        //     </div>
-        //   );
-        // });
+        
         return (
           <div className="container">
             <div className="row">
@@ -89,7 +84,10 @@ class Main extends Component {
     return (
       <div>
         <Header />
-        <Switch>
+        <TransitionGroup>
+            <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
+              <Switch location={this.props.location}>
+        
           <Route exact path="/staffs" render={() => 
             <StaffList 
               staffs={this.props.staffs.staffs}
@@ -136,6 +134,8 @@ class Main extends Component {
           />
           <Redirect to="/staffs" />
         </Switch>
+        </CSSTransition>
+          </TransitionGroup>
         <Footer />
       </div>
     );
