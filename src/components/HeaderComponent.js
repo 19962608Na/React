@@ -1,58 +1,59 @@
 import React, { Component } from "react";
-import { NavItem, Nav, Navbar, NavbarToggler, Collapse } from "reactstrap";
+import { Navbar, NavbarToggler, Collapse, Nav, NavItem, NavbarBrand } from "reactstrap";
 import { NavLink } from "react-router-dom";
 
 class Header extends Component {
   constructor(props) {
     super(props);
-
-    this.toggleNav = this.toggleNav.bind(this);
     this.state = {
-      isNavOpen: false,
+      isNavOpen: false
     };
+    this.toggleNav = this.toggleNav.bind(this);
   }
 
   toggleNav() {
-    this.setState({ isNavOpen: !this.state.isNavOpen });
+    this.setState({
+      isNavOpen: !this.state.isNavOpen
+    });
+  }
+
+  changeUrlSearch(searchName) {
+    console.log(searchName)
+    window.location.pathname = `/search/${searchName}`
   }
 
   render() {
     return (
-      <div className="header">
-        <Navbar dark expand="md">
-          <div className="container">
-            <NavbarToggler onClick={this.toggleNav} />
-            <NavLink className="mr-auto" to="/">
-              <img
-                src="assets/images/logo.png"
-                height="30"
-                width="41"
-                alt="Ristorante Con Fusion"
-              />
-            </NavLink>
-            <Collapse isOpen={this.state.isNavOpen} navbar>
-              <Nav navbar>
-                <NavItem>
-                  <NavLink className="nav-link" to="/staff">
-                    <span className="fa fa-users fa-lg"></span> Nhân Viên
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className="nav-link" to="/department">
-                    <span className="fa fa-id-card fa-lg"></span> Phòng Ban
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className="nav-link" to="/salary">
-                    <span className="fa fa-money fa-lg"></span> Bảng Lương
-                  </NavLink>
-                </NavItem>
-              </Nav>
-            </Collapse>
-          </div>
-        </Navbar>
-      </div>
+      <Navbar dark expand="lg">
+        <div className="container-fluid">
+          <NavbarToggler onClick={this.toggleNav} />
+          <NavbarBrand className="mr-auto order-first" href="/">
+            <img src='/asset/images/logo.png' height="30" width="41"
+              alt="logo" />
+          </NavbarBrand>
+          <Collapse isOpen={this.state.isNavOpen} navbar className="justify-content-between">
+            <Nav navbar>
+              <NavItem>
+                <NavLink className="nav-link" to="/staffs">
+                <i className="fa fa-users" aria-hidden="true"></i> Nhân Viên
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink className="nav-link" to="/departments">
+                <i className="fa fa-id-card-o" aria-hidden="true"></i> Phòng Ban
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink className="nav-link" to="/payroll">
+                <i className="fa fa-money" aria-hidden="true"></i> Bảng Lương
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </div>
+      </Navbar>
     );
   }
 }
+
 export default Header;
